@@ -12,7 +12,7 @@ export GIT_PS1_SHOWCOLORHINTS=true
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$HOME/.cargo/bin:$PATH"
 
-export PS1='🥔 🔹\[\e[0;36m\] \W\[\e[0;35m\]$(__git_ps1 " (%s)")\[\e[0m\]: '
+export PS1='🥔 🔹\[\e[0;36m \W\e[0;35m$(__git_ps1 " (%s)")\e[0m\]: '
 
 alias weather='curl -4 http://wttr.in/Seattle'
 alias moon='curl -4 http://wttr.in/Moon'
