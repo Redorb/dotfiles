@@ -5,11 +5,6 @@ execute pathogen#infect()
 call pathogen#helptags()
 
 "============================================================
-" Start deoplete
-"============================================================
-let g:deoplete#enable_at_startup = 1
-
-"============================================================
 " redorb settings
 "============================================================
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -29,8 +24,8 @@ set showmatch " highlight matching [{()}]
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
 set backspace=2
-let g:ctrlp_working_path_mode = 'r' " I copy and paste from other software a lot
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/* " lol
+let g:ctrlp_working_path_mode = 'r'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
 let g:ctrlp_show_hidden=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " autoquit if only nerdtree is open
 set noswapfile
@@ -40,15 +35,31 @@ let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-hi Pmenu ctermfg=15 ctermbg=61 cterm=NONE guifg=#f8f8f2 guibg=#646e96 gui=NONE
-hi PmenuSel ctermfg=16 ctermbg=84 cterm=bold guifg=#282a36 guibg=#50fa7b gui=NONE
+
 
 "============================================================
 " Mappings
 "============================================================
+" ctrl-p plugin shortcut
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" move between buffers
 map <C-Left> <Esc>:bprev<CR>
 map <C-Right> <Esc>:bnext<CR>
+
+" Nerd Tree toggling
 map <C-b> :NERDTreeToggle<CR>
+
+" move lines up and down
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" switch to left / right split
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
