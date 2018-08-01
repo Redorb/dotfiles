@@ -1,8 +1,14 @@
-"============================================================
-" Start pathogen
-"============================================================
-execute pathogen#infect()
-call pathogen#helptags()
+call plug#begin()
+Plug 'roxma/nvim-completion-manager'
+Plug 'fatih/vim-go'
+Plug 'chriskempson/base16-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'airblade/vim-gitgutter'
+call plug#end()
 
 "============================================================
 " redorb settings
@@ -11,9 +17,8 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath^=~/.vim/bundle/vim-airline/plugin/airline.vim
 set laststatus=2 " for airline
 syntax on
-color dracula
+color base16-oceanicnext
 set smartindent
-set clipboard=unnamed " use os clipboard
 set shiftwidth=2 " number of spaces when shift indenting
 set tabstop=2 " number of visual spaces per tab
 set softtabstop=2 " number of spaces in tab when editing
@@ -29,7 +34,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
 let g:ctrlp_show_hidden=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " autoquit if only nerdtree is open
 set noswapfile
-let g:jsx_ext_required=0
 let g:go_highlight_structs = 1 
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
@@ -40,10 +44,6 @@ let g:go_highlight_build_constraints = 1
 "============================================================
 " Mappings
 "============================================================
-" ctrl-p plugin shortcut
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
 " move between buffers
 map <C-Left> <Esc>:bprev<CR>
 map <C-Right> <Esc>:bnext<CR>
@@ -62,4 +62,3 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " switch to left / right split
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
